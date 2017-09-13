@@ -7,7 +7,7 @@ public class Connect {
 
 	public DB mongo() {
 		MongoClient mongo = new MongoClient("localhost", 27017);
-		DB db = mongo.getDB("Training");
+		DB db = mongo.getDB("Hotel");
 		return db;
 	}
 }
