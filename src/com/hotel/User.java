@@ -1,6 +1,6 @@
 package com.hotel;
 
-public class user {
+public class User {
 	private String id;
 	private String lastName;
 	private String firstName;

@@ -1,6 +1,6 @@
 package com.hotel;
 
-public class room {
+public class Room {
 	private String id;
 	private int roomID;
 	private String type;
