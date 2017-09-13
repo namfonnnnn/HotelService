@@ -2,20 +2,20 @@ package com.hotel;
 
 public class Room {
 	private String id;
-	private int roomID;
+	private String roomID;
 	private String type;
-	private double price;
+	private String price;
 	public String getId() {
 		return id;
 	}
 	public void setId(String id) {
 		this.id = id;
 	}
-	public int getRoomID() {
+	public String getRoomID() {
 		return roomID;
 	}
-	public void setRoomID(int roomID) {
-		this.roomID = roomID;
+	public void setRoomID(String roomid) {
+		this.roomID = roomid;
 	}
 	public String getType() {
 		return type;
@@ -23,10 +23,10 @@ public class Room {
 	public void setType(String type) {
 		this.type = type;
 	}
-	public double getPrice() {
+	public String getPrice() {
 		return price;
 	}
-	public void setPrice(double price) {
+	public void setPrice(String price) {
 		this.price = price;
 	}
 }

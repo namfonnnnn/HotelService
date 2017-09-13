@@ -8,7 +8,6 @@ import javax.jws.WebParam;
 import javax.jws.WebService;
 
 import com.connect.Connect;
-
 import com.mongodb.BasicDBObject;
 import com.mongodb.DB;
 import com.mongodb.DBCollection;
@@ -17,15 +16,15 @@ import com.mongodb.DBObject;
 
 
 
-@WebService(endpointInterface = "com.demo.HotelServiceInterface")
+@WebService(endpointInterface = "com.hotel.HotelServiceInterface")
 public class HotelService {
 		
 	
 	@WebMethod
-	public List<Room> allCourse() {
+	public List<Room> allRoom() {
 		
 		DB db = new Connect().mongo();
-		DBCollection collection = db.getCollection("course");
+		DBCollection collection = db.getCollection("room");
 		
 		BasicDBObject searchQuery = new BasicDBObject();
 		
@@ -34,16 +33,14 @@ public class HotelService {
 		List<DBObject> myList = null;
 		myList = cursor.toArray();
 		
-		System.out.println(myList);
-		
 		List<Room> list = new ArrayList<Room>();
 		
 		for (DBObject dbObject : myList) {
 			Room c = new Room();
-			c.setRoomID((int)dbObject.get("roomID"));
+			c.setRoomID(dbObject.get("roomID").toString());
 			c.setId(dbObject.get("_id").toString());
 			c.setType(dbObject.get("type").toString());
-			c.setPrice((double)dbObject.get("price"));
+			c.setPrice(dbObject.get("price").toString());
 			list.add(c);
 		}
 		return list;
