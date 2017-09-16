@@ -45,6 +45,12 @@ public class HotelService {
 			list.add(c);
 		}
 		return list;
-	
+	}
+	@WebMethod
+	public List<Room> findRoomBusy(){
+		
+		
+		
+		return null;	
 	}
 }

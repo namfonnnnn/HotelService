@@ -14,7 +14,7 @@ public interface HotelServiceInterface {
 	public List<Room> allRoom();
 	
 	@WebMethod
-	public List<Room> findRoom();
+	public List<Room> findRoomBusy();
 	
 	@WebMethod
 	public List<Room> createUser();
