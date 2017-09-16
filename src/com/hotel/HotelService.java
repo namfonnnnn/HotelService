@@ -38,18 +38,16 @@ public class HotelService {
 		
 		for (DBObject dbObject : myList) {
 			Room c = new Room();
-			c.setRoomID(dbObject.get("roomID").toString());
+			c.setRoomID((int) dbObject.get("roomID"));
 			c.setId(dbObject.get("_id").toString());
 			c.setType(dbObject.get("type").toString());
-			c.setPrice(dbObject.get("price").toString());
+			c.setPrice((double) dbObject.get("price"));
 			list.add(c);
 		}
 		return list;
 	}
 	@WebMethod
 	public List<Room> findRoomBusy(){
-		
-		
 		
 		return null;	
 	}
