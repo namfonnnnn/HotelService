@@ -1,4 +1,4 @@
-package com.hotel;
+package com.model;
 
 public class Room {
 	private String id;

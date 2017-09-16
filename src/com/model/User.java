@@ -1,4 +1,4 @@
-package com.hotel;
+package com.model;
 
 public class User {
 	private String id;

@@ -8,6 +8,7 @@ import javax.jws.WebParam;
 import javax.jws.WebService;
 
 import com.connect.Connect;
+import com.model.Room;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DB;
 import com.mongodb.DBCollection;
