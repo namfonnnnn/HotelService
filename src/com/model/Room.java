@@ -1,6 +1,7 @@
 package com.model;
 
-import javax.jws.WebParam;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.bson.types.ObjectId;
 
@@ -8,13 +9,16 @@ import com.connect.Connect;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DB;
 import com.mongodb.DBCollection;
+import com.mongodb.DBCursor;
 import com.mongodb.DBObject;
 
 public class Room {
 	private String id;
 	private int roomID;
 	private String type;
-	private double price;
+	private String price;
+	DB db = new Connect().mongo();
+	DBCollection collection = db.getCollection("room");
 	public String getId() {
 		return id;
 	}
@@ -33,30 +37,26 @@ public class Room {
 	public void setType(String type) {
 		this.type = type;
 	}
-	public double getPrice() {
+	public String getPrice() {
 		return price;
 	}
-	public void setPrice(double price) {
+	public void setPrice(String price) {
 		this.price = price;
 	}
 	public boolean create(int roomID,String type,double price) {
-		DB db = new Connect().mongo();
-		DBCollection collection = db.getCollection("room");
-		
-		
+			
 		BasicDBObject document = new BasicDBObject();
 		document.put("roomID", roomID);
 		document.put("type", type);
 		document.put("price", price);
-
+		
 		collection.insert(document);
 		
 		return true;
 	}
+	
 	public boolean update(String id, int roomID,String type,double price ){
-		DB db = new Connect().mongo();
-		DBCollection collection = db.getCollection("course");
-		
+	
 		BasicDBObject document = new BasicDBObject();
 		document.put("roomID", roomID);
 		document.put("type", type);
@@ -67,14 +67,11 @@ public class Room {
 		
 		BasicDBObject searchQuery = new BasicDBObject();
 		searchQuery.put("_id", new ObjectId(id));
-
 		collection.update(searchQuery, setQuery);
 		
 		return true;  
 	}
 	public boolean delete(String id) {
-		DB db = new Connect().mongo();
-		DBCollection collection = db.getCollection("room");
 		
 		DBObject document = collection.findOne(new ObjectId(id));
 		collection.remove(document);
@@ -82,20 +79,38 @@ public class Room {
 		return true;  
 	}
 	
-	
-	public Room getUpdate(@WebParam(name = "Room") String id) {
-		DB db = new Connect().mongo();
-		DBCollection table = db.getCollection("Room");
-		
-		DBObject object = table.findOne(new ObjectId(id));
+	public Room getUpdate(String id) {
+		DBObject object = collection.findOne(new ObjectId(id));
 		
 		Room course = new Room();
 		course.setId(object.get("_id").toString());
 		course.setRoomID((int) object.get("roomID"));
 		course.setType(object.get("type").toString());
-		course.setPrice((double) object.get("price"));
+		course.setPrice(object.get("price").toString());
 		
 		return course;  
+	}
+	
+	public List<Room> emptyRoom(int[] roomNumber)    {
+		DBCollection collection = db.getCollection("room");
+		BasicDBObject searchQuery = new BasicDBObject();
+		searchQuery.put("roomID", new BasicDBObject("$nin",roomNumber));
+		DBCursor cursor = collection.find(searchQuery);
+		
+		List<DBObject> myList = cursor.toArray();
+		
+		List<Room> list = new ArrayList<Room>();
+		
+		for (DBObject dbObject : myList) {
+			Room c = new Room();
+			c.setRoomID((int) dbObject.get("roomID"));
+			c.setId(dbObject.get("_id").toString());
+			c.setType(dbObject.get("type").toString());
+			c.setPrice(dbObject.get("price").toString());
+			list.add(c);
+		}
+		return list;
+	 
 	}
 	
 }

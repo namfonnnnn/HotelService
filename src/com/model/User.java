@@ -21,6 +21,8 @@ public class User {
 	private String username;
 	private String password;
 	private String type;
+	DB db = new Connect().mongo();
+	DBCollection collection = db.getCollection("User");
 	public String getId() {
 		return id;
 	}
@@ -84,10 +86,7 @@ public class User {
 	
 	
 	public boolean create(String lastName,String firstName,String identity,String phone,String email,String address,String username,String password,String type) {
-		DB db = new Connect().mongo();
-		DBCollection collection = db.getCollection("user");
-		
-		
+	
 		BasicDBObject document = new BasicDBObject();
 		document.put("lastName", lastName);
 		document.put("firstName", firstName);
@@ -98,16 +97,13 @@ public class User {
 		document.put("username", username);
 		document.put("password", password);
 		document.put("type", type);
-		
 
 		collection.insert(document);
 		
 		return true;
 	}
-	public boolean update(String lastName,String firstName,String identity,String phone,String email,String address,String username,String password,String type){
-		DB db = new Connect().mongo();
-		DBCollection collection = db.getCollection("course");
-		
+	public boolean update(String id,String lastName,String firstName,String identity,String phone,String email,String address,String username,String password,String type){
+	
 		BasicDBObject document = new BasicDBObject();
 		document.put("lastName", lastName);
 		document.put("firstName", firstName);
@@ -130,8 +126,6 @@ public class User {
 		return true;  
 	}
 	public boolean delete(String id) {
-		DB db = new Connect().mongo();
-		DBCollection collection = db.getCollection("user");
 		
 		DBObject document = collection.findOne(new ObjectId(id));
 		collection.remove(document);
@@ -141,14 +135,11 @@ public class User {
 	
 	
 	public User getUpdate(@WebParam(name = "User") String id) {
-		DB db = new Connect().mongo();
-		DBCollection table = db.getCollection("User");
-		
-		DBObject object = table.findOne(new ObjectId(id));
+		DBObject object = collection.findOne(new ObjectId(id));
 		
 		User course = new User();
-		course.setId       (object.get("_id").toString());
-		course.setLastName (object.get("lastName").toString());
+		course.setId(object.get("_id").toString());
+		course.setLastName(object.get("lastName").toString());
 		course.setFirstName(object.get("firstName").toString());
 		course.setIdentity (object.get("identity").toString());
 		course.setPhone    (object.get("phone").toString());
