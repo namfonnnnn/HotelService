@@ -1,0 +1,139 @@
+
+{
+    "_id" : ObjectId("59b81eb3cb41a81f92d8f926"),
+    "LastName" : "Labrune",
+    "FirstName" : "Janine ",
+    "identity" : "3060784763172",
+    "phone" : "40.67.8555",
+    "address" : "67, rue des Cinquante Otages Nantes France",
+    "email" : "Labrune@gmail.com",
+    "username" : "ccccc",
+    "password" : "cccccccc",
+    "type" : "2"
+}
+
+
+{
+    "_id" : ObjectId("59b81eb3cb41a81f92d8f928"),
+    "LastName" : "Bergulfsen",
+    "FirstName" : "Jonas ",
+    "identity" : "2565086315389",
+    "phone" : "07-98 9555",
+    "address" : "Erling Skakkes gate 78 Stavern Norway",
+    "email" : "Bergulfsen@gmail.com",
+    "username" : "ddddd",
+    "password" : "dddddddd",
+    "type" : "2"
+}
+
+
+{
+    "_id" : ObjectId("59b81eb3cb41a81f92d8f92a"),
+    "LastName" : "Nelson",
+    "FirstName" : "Susan",
+    "identity" : "3881770562301",
+    "phone" : "4155551450",
+    "address" : "5677 Strong St. San Rafael CA USA",
+    "email" : "Nelson@gmail.com",
+    "username" : "eeeee",
+    "password" : "eeeeeeee",
+    "type" : "2"
+}
+
+
+{
+    "_id" : ObjectId("59b81eb3cb41a81f92d8f92c"),
+    "LastName" : "Piestrzeniewicz",
+    "FirstName" : "Zbyszek ",
+    "identity" : "6746560323563",
+    "phone" : "(26) 642-7555",
+    "address" : "ul. Filtrowa 68 Warszawa Poland",
+    "email" : "Piest@gmail.com",
+    "username" : "fffff",
+    "password" : "ffffffff",
+    "type" : "2"
+}
+
+
+{
+    "_id" : ObjectId("59b81eb3cb41a81f92d8f92e"),
+    "LastName" : "Keitel",
+    "FirstName" : "Roland",
+    "identity" : "6746560323563",
+    "phone" : "+49 69 66 90 2555",
+    "address" : "Lyonerstr. 34 Frankfurt Germany",
+    "email" : "Keitel@gmail.com",
+    "username" : "ggggg",
+    "password" : "gggggggg",
+    "type" : "2"
+}
+
+
+{
+    "_id" : ObjectId("59b81eb3cb41a81f92d8f930"),
+    "LastName" : "Murphy",
+    "FirstName" : "Julie",
+    "identity" : "6746560323563",
+    "phone" : "6505555787",
+    "address" : "5557 North Pendale Street San Francisco CA USA",
+    "email" : "murphy@gmail.com",
+    "username" : "ggggg",
+    "password" : "gggggggg",
+    "type" : "2"
+}
+
+
+{
+    "_id" : ObjectId("59b81eb3cb41a81f92d8f932"),
+    "LastName" : "Lee",
+    "FirstName" : "Kwai",
+    "identity" : "6746560323563",
+    "phone" : "2125557818",
+    "address" : "897 Long Airport Avenue NYC NY USA",
+    "email" : "lee@gmail.com",
+    "username" : "ggggg",
+    "password" : "gggggggg",
+    "type" : "2"
+}
+
+
+{
+    "_id" : 1,
+    "LastName" : "Schmitt",
+    "FirstName" : "Carine ",
+    "identity" : "2067578435406",
+    "phone" : "231-741-8740",
+    "address" : "54, rue Royale Nantes France",
+    "email" : "Schmitt@gmail.com",
+    "username" : "test",
+    "password" : "test",
+    "type" : "0"
+}
+
+
+{
+    "_id" : 2,
+    "LastName" : "King",
+    "FirstName" : "Jean",
+    "identity" : "3080031484373",
+    "phone" : "7025551838",
+    "address" : "8489 Strong St. Las Vegas NV USA",
+    "email" : "King@gmail.com",
+    "username" : "aaaaa",
+    "password" : "aaaaaaaa",
+    "type" : "1"
+}
+
+
+{
+    "_id" : 3,
+    "LastName" : "Ferguson",
+    "FirstName" : "Peter",
+    "identity" : "5080175057614",
+    "phone" : "03 9520 4555",
+    "address" : "636 St Kilda Road Melbourne Victoria Australia",
+    "email" : "Fergusong@gmail.com",
+    "username" : "bbbbb",
+    "password" : "bbbbbbbb",
+    "type" : "1"
+}

@@ -1,0 +1,54 @@
+
+{
+    "_id" : ObjectId("59b815ffcb41a81f92d8f758"),
+    "roomID" : 1,
+    "type" : "2 king bed",
+    "price" : 2500
+}
+
+
+{
+    "_id" : ObjectId("59b815ffcb41a81f92d8f75a"),
+    "roomID" : 2,
+    "type" : "1 king bed",
+    "price" : 1500
+}
+
+
+{
+    "_id" : ObjectId("59b815ffcb41a81f92d8f75c"),
+    "roomID" : 3,
+    "type" : "1 king bed",
+    "price" : 1500
+}
+
+
+{
+    "_id" : ObjectId("59b815ffcb41a81f92d8f75e"),
+    "roomID" : 4,
+    "type" : "2 single bed",
+    "price" : 1000
+}
+
+
+{
+    "_id" : ObjectId("59b815ffcb41a81f92d8f760"),
+    "roomID" : 5,
+    "type" : "2 single bed",
+    "price" : 1000
+}
+
+
+{
+    "_id" : ObjectId("59b815ffcb41a81f92d8f762"),
+    "roomID" : 6,
+    "type" : "2 single bed",
+    "price" : 1000
+}
+
+{
+    "_id" : ObjectId("59b815ffcb41a81f92d8f764"),
+    "roomID" : 7,
+    "type" : "2 single bed",
+    "price" : 1000
+}

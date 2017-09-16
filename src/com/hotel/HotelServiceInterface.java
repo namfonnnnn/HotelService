@@ -10,4 +10,10 @@ public interface HotelServiceInterface {
 
 	@WebMethod
 	public List<Room> allRoom();
+	
+	@WebMethod
+	public List<Room> findRoom();
+	
+	@WebMethod
+	public List<Room> createUser();
 }

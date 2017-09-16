@@ -1,0 +1,126 @@
+
+{
+    "_id" : ObjectId("59b8281ccb41a81f92d8fad7"),
+    "bookingID" : 1,
+    "bookingDate" : "2017-4-25",
+    "userID" : 2,
+    "nameWhoBooK" : "Susan",
+    "detailBooking" : [ 
+        {
+            "roomID" : 2,
+            "startDate" : "2017-5-10",
+            "endDate" : "2017-5-12",
+            "Checkin" : "2017-5-10",
+            "CheckOut" : "2017-5-12",
+            "Paydate" : "2017-5-10",
+            "Pay" : 3000
+        }
+    ]
+}
+
+
+{
+    "_id" : ObjectId("59b8281ccb41a81f92d8fad9"),
+    "bookingID" : 2,
+    "bookingDate" : "2017-4-19",
+    "userID" : 2,
+    "nameWhoBooK" : "Roland",
+    "detailBooking" : [ 
+        {
+            "roomID" : 5,
+            "startDate" : "2017-5-1",
+            "endDate" : "2017-5-5",
+            "Checkin" : "2017-5-1",
+            "CheckOut" : "2017-5-5",
+            "Paydate" : "2017-5-1",
+            "Pay" : 4000
+        }
+    ]
+}
+
+
+{
+    "_id" : ObjectId("59b8281ccb41a81f92d8fadb"),
+    "bookingID" : 3,
+    "bookingDate" : "2017-6-25",
+    "userID" : 2,
+    "nameWhoBooK" : "Janine",
+    "detailBooking" : [ 
+        {
+            "roomID" : 2,
+            "startDate" : "2017-7-10",
+            "endDate" : "2017-7-12",
+            "Checkin" : "2017-7-10",
+            "CheckOut" : "2017-7-12",
+            "Paydate" : "2017-7-10",
+            "Pay" : 3000
+        }
+    ]
+}
+
+
+{
+    "_id" : ObjectId("59b8281ccb41a81f92d8fadd"),
+    "bookingID" : 4,
+    "bookingDate" : "2017-7-2",
+    "userID" : 2,
+    "nameWhoBooK" : "Jonas",
+    "detailBooking" : [ 
+        {
+            "roomID" : 6,
+            "startDate" : "2017-8-15",
+            "endDate" : "2017-8-25",
+            "Checkin" : "2017-8-15",
+            "CheckOut" : "2017-8-25",
+            "Paydate" : "2017-8-15",
+            "Pay" : 10000
+        }, 
+        {
+            "roomID" : 7,
+            "startDate" : "2017-8-15",
+            "endDate" : "2017-8-24",
+            "Checkin" : "2017-8-15",
+            "CheckOut" : "2017-8-24",
+            "Paydate" : "2017-8-15",
+            "Pay" : 9000
+        }
+    ]
+}
+
+
+{
+    "_id" : ObjectId("59b8281ccb41a81f92d8fadf"),
+    "bookingID" : 5,
+    "bookingDate" : "2017-8-29",
+    "nameWhoBooK" : "Kwai",
+    "detailBooking" : [ 
+        {
+            "roomID" : 4,
+            "startDate" : "2017-9-1",
+            "endDate" : "2017-9-2",
+            "Checkin" : "2017-9-1",
+            "CheckOut" : "2017-9-2",
+            "Paydate" : "2017-9-1",
+            "Pay" : 1000
+        }
+    ]
+}
+
+
+{
+    "_id" : ObjectId("59b8281ccb41a81f92d8fae1"),
+    "bookingID" : 6,
+    "bookingDate" : "2017-8-31",
+    "nameWhoBooK" : "Julie",
+    "detailBooking" : [ 
+        {
+            "roomID" : 1,
+            "startDate" : "2017-9-9",
+            "endDate" : "2017-9-12",
+            "Checkin" : "2017-9-9",
+            "CheckOut" : "2017-9-12",
+            "Paydate" : "2017-9-9",
+            "Pay" : 7500
+        }
+    ]
+}
