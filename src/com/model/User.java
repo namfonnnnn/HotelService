@@ -1,5 +1,15 @@
 package com.model;
 
+import javax.jws.WebParam;                                       
+import org.bson.types.ObjectId;
+import com.connect.Connect;
+import com.mongodb.BasicDBObject;
+import com.mongodb.DB;
+import com.mongodb.DBCollection;
+import com.mongodb.DBObject;
+
+import com.connect.Connect;
+
 public class User {
 	private String id;
 	private String lastName;
@@ -70,5 +80,83 @@ public class User {
 	}
 	public void setType(String type) {
 		this.type = type;
+	}
+	
+	
+	public boolean create(String lastName,String firstName,String identity,String phone,String email,String address,String username,String password,String type) {
+		DB db = new Connect().mongo();
+		DBCollection collection = db.getCollection("user");
+		
+		
+		BasicDBObject document = new BasicDBObject();
+		document.put("lastName", lastName);
+		document.put("firstName", firstName);
+		document.put("identity", identity);
+		document.put("phone", phone);
+		document.put("email", email);
+		document.put("address", address);
+		document.put("username", username);
+		document.put("password", password);
+		document.put("type", type);
+		
+
+		collection.insert(document);
+		
+		return true;
+	}
+	public boolean update(String lastName,String firstName,String identity,String phone,String email,String address,String username,String password,String type){
+		DB db = new Connect().mongo();
+		DBCollection collection = db.getCollection("course");
+		
+		BasicDBObject document = new BasicDBObject();
+		document.put("lastName", lastName);
+		document.put("firstName", firstName);
+		document.put("identity", identity);
+		document.put("phone", phone);
+		document.put("email", email);
+		document.put("address", address);
+		document.put("username", username);
+		document.put("password", password);
+		document.put("type", type);
+		
+		BasicDBObject setQuery = new BasicDBObject();
+        setQuery.put("$set", document);
+		
+		BasicDBObject searchQuery = new BasicDBObject();
+		searchQuery.put("_id", new ObjectId(id));
+
+		collection.update(searchQuery, setQuery);
+		
+		return true;  
+	}
+	public boolean delete(String id) {
+		DB db = new Connect().mongo();
+		DBCollection collection = db.getCollection("user");
+		
+		DBObject document = collection.findOne(new ObjectId(id));
+		collection.remove(document);
+		
+		return true;  
+	}
+	
+	
+	public User getUpdate(@WebParam(name = "User") String id) {
+		DB db = new Connect().mongo();
+		DBCollection table = db.getCollection("User");
+		
+		DBObject object = table.findOne(new ObjectId(id));
+		
+		User course = new User();
+		course.setId       (object.get("_id").toString());
+		course.setLastName (object.get("lastName").toString());
+		course.setFirstName(object.get("firstName").toString());
+		course.setIdentity (object.get("identity").toString());
+		course.setPhone    (object.get("phone").toString());
+		course.setEmail    (object.get("email").toString());
+		course.setAddress  (object.get("address").toString());
+		course.setUsername (object.get("username").toString());
+		course.setPassword (object.get("password").toString());
+		course.setType     (object.get("type").toString());
+		return course;  
 	}
 }
