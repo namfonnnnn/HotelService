@@ -40,7 +40,7 @@ public class HotelService {
 		
 		for (DBObject dbObject : myList) {
 			Room c = new Room();
-			c.setRoomID((int) dbObject.get("roomID"));
+			c.setRoomID(dbObject.get("_id").toString());
 			c.setId(dbObject.get("_id").toString());
 			c.setType(dbObject.get("type").toString());
 			c.setPrice(dbObject.get("price").toString());
@@ -83,7 +83,7 @@ public class HotelService {
 	}
 	
 	@WebMethod
-	public boolean updateRoom(@WebParam(name = "id") String id ,@WebParam(name = "roomID") int roomID, 
+	public boolean updateRoom(@WebParam(name = "id") String id ,@WebParam(name = "roomID") String roomID, 
 			@WebParam(name = "type") String type, @WebParam(name = "price") String price) {
 		Room room = new Room();
 		double p = Double.parseDouble(price);

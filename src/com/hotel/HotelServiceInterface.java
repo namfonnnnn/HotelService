@@ -23,7 +23,7 @@ public interface HotelServiceInterface {
 	public boolean createRoom(@WebParam(name = "roomID") String roomID, 
 			@WebParam(name = "type") String type,@WebParam(name = "price") String price);
 	
-	public boolean updateRoom(@WebParam(name = "id") String id ,@WebParam(name = "roomID") int roomID, 
+	public boolean updateRoom(@WebParam(name = "id") String id ,@WebParam(name = "roomID") String roomID, 
 			@WebParam(name = "type") String type, @WebParam(name = "price") String price) ;
 	
 	

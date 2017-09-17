@@ -14,7 +14,7 @@ import com.mongodb.DBObject;
 
 public class Room {
 	private String id;
-	private int roomID;
+	private String roomID;
 	private String type;
 	private String price;
 	DB db = new Connect().mongo();
@@ -25,11 +25,11 @@ public class Room {
 	public void setId(String id) {
 		this.id = id;
 	}
-	public int getRoomID() {
+	public String getRoomID() {
 		return roomID;
 	}
-	public void setRoomID(int roomid) {
-		this.roomID = roomid;
+	public void setRoomID(String i) {
+		this.roomID = i;
 	}
 	public String getType() {
 		return type;
@@ -55,10 +55,10 @@ public class Room {
 		return true;
 	}
 	
-	public boolean update(String id, int roomID,String type,double price ){
+	public boolean update(String id, String roomID2,String type,double price ){
 	
 		BasicDBObject document = new BasicDBObject();
-		document.put("roomID", roomID);
+		document.put("roomID", roomID2);
 		document.put("type", type);
 		document.put("price", price);
 		
@@ -84,7 +84,7 @@ public class Room {
 		
 		Room course = new Room();
 		course.setId(object.get("_id").toString());
-		course.setRoomID((int) object.get("roomID"));
+		course.setRoomID(object.get("roomID").toString());
 		course.setType(object.get("type").toString());
 		course.setPrice(object.get("price").toString());
 		
@@ -103,7 +103,7 @@ public class Room {
 		
 		for (DBObject dbObject : myList) {
 			Room c = new Room();
-			c.setRoomID((int) dbObject.get("roomID"));
+			c.setRoomID(dbObject.get("roomID").toString());
 			c.setId(dbObject.get("_id").toString());
 			c.setType(dbObject.get("type").toString());
 			c.setPrice(dbObject.get("price").toString());
