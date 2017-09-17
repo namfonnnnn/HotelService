@@ -62,7 +62,7 @@ public class HotelService {
 	}
 	
 	@WebMethod
-	public boolean createRoom(@WebParam(name = "roomID") int roomID, 
+	public boolean createRoom(@WebParam(name = "roomID") String roomID, 
 			@WebParam(name = "type") String type,@WebParam(name = "price") String price) {
 		
 	DB db = new Connect().mongo();
