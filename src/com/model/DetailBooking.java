@@ -23,6 +23,7 @@ public class DetailBooking {
 		searchQuery.put("startDate", new BasicDBObject("$gte", startDate));
 		searchQuery.put("endDate", new BasicDBObject("$lte", endDate));
 		
+		System.out.println(searchQuery);
 		DBCursor cursor = collection.find(searchQuery);
 		
 		List<DBObject> myList = null;

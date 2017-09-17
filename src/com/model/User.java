@@ -22,7 +22,7 @@ public class User {
 	private String password;
 	private String type;
 	DB db = new Connect().mongo();
-	DBCollection collection = db.getCollection("User");
+	DBCollection collection = db.getCollection("user");
 	public String getId() {
 		return id;
 	}

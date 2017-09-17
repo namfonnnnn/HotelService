@@ -93,16 +93,18 @@ public class HotelService {
 	
 	@WebMethod
 	public Room getupdateRoom(@WebParam(name = "id") String id) {
+		
 		Room room = new Room();
-		room.delete(id);
+		room.getUpdate(id);
+		System.out.println(room.getRoomID());
 	return room;
 	}
 
 	@WebMethod
-	public Room deleteRoom(@WebParam(name = "id") String id) {
+	public boolean deleteRoom(@WebParam(name = "id") String id) {
 		Room room = new Room();
-		room.getUpdate(id);
-	return room;
+		room.delete(id);
+	return true;
 	}
 	
 	@WebMethod
