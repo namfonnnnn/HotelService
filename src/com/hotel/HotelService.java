@@ -64,10 +64,22 @@ public class HotelService {
 	@WebMethod
 	public boolean createRoom(@WebParam(name = "roomID") int roomID, 
 			@WebParam(name = "type") String type,@WebParam(name = "price") String price) {
-		Room room = new Room();
-		double p = Double.parseDouble(price);
-		room.create(roomID, type, p);
-	return true;
+		
+	DB db = new Connect().mongo();
+	DBCollection collection = db.getCollection("room");
+	
+	System.out.println(roomID);
+	System.out.println(type);
+	System.out.println(price);
+	
+	BasicDBObject document = new BasicDBObject();
+	document.put("roomID", roomID);
+	document.put("type", type);
+	document.put("price", price);
+
+	collection.insert(document);
+	
+	return true; 
 	}
 	
 	@WebMethod
