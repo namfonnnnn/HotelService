@@ -14,7 +14,8 @@ public interface HotelServiceInterface {
 
 	@WebMethod
 	public List<Room> allRoom();
-	
+	@WebMethod
+	public List<User> allUser();
 	@WebMethod  //หาห้องว่าง ใส่เป็น yyyy-mm-dd
 	public List<Room> findRoomBusy(@WebParam(name = "startDate") String startDate,@WebParam(name = "endDate") String endDate);
 	
@@ -32,10 +33,12 @@ public interface HotelServiceInterface {
 	
 	
 	@WebMethod
-	public Room deleteRoom(@WebParam(name = "id") String id);
-	
+	public Boolean deleteRoom(@WebParam(name = "id") String id);
 	
 	@WebMethod
+	public Boolean deleteUser(@WebParam(name = "id") String id);
+	@WebMethod
+	
 	public boolean createUser(@WebParam(name = "lastName") String lastName, 
 			@WebParam(name = "firstName") String firstName, @WebParam(name = "identity") String identity,
 			@WebParam(name = "phone") String phone, @WebParam(name = "email") String email,

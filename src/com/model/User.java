@@ -21,8 +21,10 @@ public class User {
 	private String username;
 	private String password;
 	private String type;
+	
 	DB db = new Connect().mongo();
 	DBCollection collection = db.getCollection("user");
+	
 	public String getId() {
 		return id;
 	}
@@ -88,8 +90,8 @@ public class User {
 	public boolean create(String lastName,String firstName,String identity,String phone,String email,String address,String username,String password,String type) {
 	
 		BasicDBObject document = new BasicDBObject();
-		document.put("lastName", lastName);
-		document.put("firstName", firstName);
+		document.put("LastName", lastName);
+		document.put("FirstName", firstName);
 		document.put("identity", identity);
 		document.put("phone", phone);
 		document.put("email", email);
@@ -105,8 +107,8 @@ public class User {
 	public boolean update(String id,String lastName,String firstName,String identity,String phone,String email,String address,String username,String password,String type){
 	
 		BasicDBObject document = new BasicDBObject();
-		document.put("lastName", lastName);
-		document.put("firstName", firstName);
+		document.put("LastName", lastName);
+		document.put("FirstName", firstName);
 		document.put("identity", identity);
 		document.put("phone", phone);
 		document.put("email", email);
@@ -125,22 +127,16 @@ public class User {
 		
 		return true;  
 	}
-	public boolean delete(String id) {
-		
-		DBObject document = collection.findOne(new ObjectId(id));
-		collection.remove(document);
-		
-		return true;  
-	}
-	
+
 	
 	public User getUpdate(@WebParam(name = "User") String id) {
+		System.out.println(id);
 		DBObject object = collection.findOne(new ObjectId(id));
 		
 		User course = new User();
 		course.setId(object.get("_id").toString());
-		course.setLastName(object.get("lastName").toString());
-		course.setFirstName(object.get("firstName").toString());
+		course.setLastName(object.get("LastName").toString());
+		course.setFirstName(object.get("FirstName").toString());
 		course.setIdentity (object.get("identity").toString());
 		course.setPhone    (object.get("phone").toString());
 		course.setEmail    (object.get("email").toString());

@@ -7,7 +7,10 @@ import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebService;
 
+import org.bson.types.ObjectId;
+
 import com.connect.Connect;
+
 import com.model.DetailBooking;
 import com.model.Room;
 import com.model.User;
@@ -40,7 +43,7 @@ public class HotelService {
 		
 		for (DBObject dbObject : myList) {
 			Room c = new Room();
-			c.setRoomID(dbObject.get("_id").toString());
+			c.setRoomID(dbObject.get("roomID").toString());
 			c.setId(dbObject.get("_id").toString());
 			c.setType(dbObject.get("type").toString());
 			c.setPrice(dbObject.get("price").toString());
@@ -85,26 +88,64 @@ public class HotelService {
 	@WebMethod
 	public boolean updateRoom(@WebParam(name = "id") String id ,@WebParam(name = "roomID") String roomID, 
 			@WebParam(name = "type") String type, @WebParam(name = "price") String price) {
-		Room room = new Room();
-		double p = Double.parseDouble(price);
-		room.update(id, roomID, type, p);
-	return true;
+		DB db = new Connect().mongo();
+		DBCollection collection = db.getCollection("room");
+		
+		BasicDBObject document = new BasicDBObject();
+		document.put("roomID", roomID);
+		document.put("type", type);
+		document.put("price", price);
+		
+		System.out.println(roomID);
+		System.out.println(type);
+		System.out.println(price);
+		
+		BasicDBObject setQuery = new BasicDBObject();
+        setQuery.put("$set", document);
+		
+		BasicDBObject searchQuery = new BasicDBObject();
+		searchQuery.put("_id", new ObjectId(id));
+
+		collection.update(searchQuery, setQuery);
+		
+		return true; 
 	}
 	
 	@WebMethod
 	public Room getupdateRoom(@WebParam(name = "id") String id) {
 		
+		DB db = new Connect().mongo();
+		DBCollection table = db.getCollection("room");
+		System.out.println(id);
+		DBObject object = table.findOne(new ObjectId(id));
+		
 		Room room = new Room();
-		room.getUpdate(id);
-		System.out.println(room.getRoomID());
-	return room;
+		room.setId(object.get("_id").toString());
+		room.setRoomID(object.get("roomID").toString());
+		room.setType(object.get("type").toString());
+		room.setPrice(object.get("price").toString());
+		
+		return room;
 	}
 
 	@WebMethod
 	public boolean deleteRoom(@WebParam(name = "id") String id) {
-		Room room = new Room();
-		room.delete(id);
-	return true;
+		DB db = new Connect().mongo();
+		DBCollection collection = db.getCollection("room");
+		System.out.println(id);
+		DBObject document = collection.findOne(new ObjectId(id));
+		collection.remove(document);
+		
+		return true; 
+	}
+	public boolean deleteUser(String id) {
+		System.out.println(id);
+		DB db = new Connect().mongo();
+		DBCollection collection = db.getCollection("user");
+		DBObject document = collection.findOne(new ObjectId(id));
+		collection.remove(document);
+		
+		return true;  
 	}
 	
 	@WebMethod
@@ -133,9 +174,56 @@ public class HotelService {
 	
 	@WebMethod
 	public User getupdateUser(@WebParam(name = "id") String id) {
-		User user = new User ();
-		user.getUpdate(id);
-	return user;
+
+
+		DB db = new Connect().mongo();
+		DBCollection table = db.getCollection("user");
+		System.out.println(id);
+		DBObject object = table.findOne(new ObjectId(id));
+		
+		User course = new User();
+		course.setId(object.get("_id").toString());
+		course.setLastName(object.get("LastName").toString());
+		course.setFirstName(object.get("FirstName").toString());
+		course.setIdentity (object.get("identity").toString());
+		course.setPhone    (object.get("phone").toString());
+		course.setEmail    (object.get("email").toString());
+		course.setAddress  (object.get("address").toString());
+		course.setUsername (object.get("username").toString());
+		course.setPassword (object.get("password").toString());
+		course.setType     (object.get("type").toString());
+		return course;  
+	}
+public List<User> allUser() {
+		
+		DB db = new Connect().mongo();
+		DBCollection collection = db.getCollection("user");
+		
+		BasicDBObject searchQuery = new BasicDBObject();
+		
+		DBCursor cursor = collection.find(searchQuery);
+		
+		List<DBObject> myList = null;
+		myList = cursor.toArray();
+		
+		List<User> list = new ArrayList<User>();
+		
+		for (DBObject dbObject : myList) {
+			User u = new User();
+			u.setId(dbObject.get("_id").toString());
+			u.setFirstName(dbObject.get("FirstName").toString());
+			u.setLastName(dbObject.get("LastName").toString());
+			u.setIdentity(dbObject.get("identity").toString());
+			u.setPhone(dbObject.get("phone").toString());
+			u.setEmail(dbObject.get("email").toString());
+			u.setAddress(dbObject.get("address").toString());
+			u.setUsername(dbObject.get("username").toString());
+			u.setPassword(dbObject.get("password").toString());
+			u.setType(dbObject.get("type").toString());
+
+			list.add(u);
+		}
+		return list;
 	}
 	
 	
