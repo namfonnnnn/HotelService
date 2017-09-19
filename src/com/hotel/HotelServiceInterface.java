@@ -16,6 +16,7 @@ public interface HotelServiceInterface {
 	public List<Room> allRoom();
 	@WebMethod
 	public List<User> allUser();
+	
 	@WebMethod  //หาห้องว่าง ใส่เป็น yyyy-mm-dd
 	public List<Room> findRoomBusy(@WebParam(name = "startDate") String startDate,@WebParam(name = "endDate") String endDate);
 	

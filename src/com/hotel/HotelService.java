@@ -51,6 +51,7 @@ public class HotelService {
 		}
 		return list;
 	}
+	
 	@WebMethod
 	public List<Room> findRoomBusy(@WebParam(name = "startDate") String startDate,@WebParam(name = "endDate") String endDate){
 		DetailBooking room = new DetailBooking();
@@ -61,6 +62,7 @@ public class HotelService {
 		List<Room> emptyRoom = new ArrayList<Room>();
 		
 		emptyRoom = room2.emptyRoom(fullRoom);
+		int a = emptyRoom.size();
 		return emptyRoom;	
 	}
 	
@@ -194,7 +196,10 @@ public class HotelService {
 		course.setType     (object.get("type").toString());
 		return course;  
 	}
-public List<User> allUser() {
+	
+	
+	@WebMethod
+	public List<User> allUser(){
 		
 		DB db = new Connect().mongo();
 		DBCollection collection = db.getCollection("user");
